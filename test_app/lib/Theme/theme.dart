@@ -16,10 +16,11 @@ class MyTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(   // für Buttons 
         style: ElevatedButton.styleFrom(
-          
+          backgroundColor: Colors.blueAccent,
           foregroundColor: Colors.white,
           shape: 
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          elevation: 8,
         ), 
       ),
       inputDecorationTheme: InputDecorationTheme(      // für Borders

@@ -30,7 +30,30 @@ class SignInPage extends StatelessWidget {
                   filled: true,fillColor: Colors.white,
                 hintText: "Password"),),
                 ),
-            
+       
+            Positioned( top: 450, right:0, left: 0,
+              child: Center(
+                child: SizedBox(width: 160,
+                  child: ElevatedButton(
+                    onPressed: (){}, child:
+                     Text("Sign In",style:TextStyle(fontWeight: FontWeight.bold),)),
+                ),
+              ),
+            ),
+            Positioned(top: 550,right: 0,left: 0,
+              child: Center(
+                child: TextButton(onPressed: (){},
+                 child: Text("if you don't have an account Sign Up here!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+              )),
+              Positioned(top: 600,right: 0,left: 0,
+                child: Center(child: Text("or login with",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)))),
+                Positioned(top: 650,right: 0,left: 0,
+                  child:Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(onPressed: (){}, icon: Icon(Icons.apple,color: Colors.white)),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.mail,color: Colors.white)),
+                    ],
+                  ), ),
         ],
       ) ,
     );
