@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/screens/SignUp.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -14,7 +15,7 @@ class SignInPage extends StatelessWidget {
               image: DecorationImage(image: AssetImage("images/signIn.png"),fit: BoxFit.cover),),
           ),
       
-          Positioned( top: 70,left:16 ,
+          Positioned( top: 70,left: 8,
             child: Text("Welcome to your Travel App",style: Theme.of(context).textTheme.headlineLarge),
             ),
             Positioned(top: 220,left: 16,
@@ -42,12 +43,12 @@ class SignInPage extends StatelessWidget {
             ),
             Positioned(top: 550,right: 0,left: 0,
               child: Center(
-                child: TextButton(onPressed: (){},
-                 child: Text("if you don't have an account Sign Up here!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                child: TextButton(onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SignUpPage()));},
+                 child: Text("if you don't have an account Sign Up here!",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),textAlign:TextAlign.center,)),
               )),
-              Positioned(top: 600,right: 0,left: 0,
+              Positioned(top: 620,right: 0,left: 0,
                 child: Center(child: Text("or login with",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold)))),
-                Positioned(top: 650,right: 0,left: 0,
+                Positioned(top: 670,right: 0,left: 0,
                   child:Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       IconButton(onPressed: (){}, icon: Icon(Icons.apple,color: Colors.white)),

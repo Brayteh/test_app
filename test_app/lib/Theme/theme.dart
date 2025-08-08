@@ -7,9 +7,9 @@ class MyTheme {
    
     scaffoldBackgroundColor: Colors.white,
     textTheme: const TextTheme(                           // für Texte 
-      headlineLarge: TextStyle(fontSize: 28,fontWeight: FontWeight.bold,color: Colors.white),
-      bodyMedium: TextStyle(fontSize: 20),
-      labelLarge: TextStyle(fontSize: 16,color: Colors.green)
+      headlineLarge: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.white),
+      bodyMedium: TextStyle(fontSize: 26,fontWeight: FontWeight.bold,color: Colors.white),
+      labelLarge: TextStyle(fontSize: 16,color: Colors.redAccent)
     ),
       appBarTheme: AppBarTheme(
         foregroundColor: const Color.fromARGB(255, 108, 194, 255),
