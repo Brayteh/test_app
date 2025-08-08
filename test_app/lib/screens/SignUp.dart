@@ -9,7 +9,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  bool term = true;
+  bool term = false;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(

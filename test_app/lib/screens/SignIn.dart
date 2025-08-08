@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/screens/SignUp.dart';
+import 'package:test_app/screens/homePage.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -36,7 +37,8 @@ class SignInPage extends StatelessWidget {
               child: Center(
                 child: SizedBox(width: 160,
                   child: ElevatedButton(
-                    onPressed: (){}, child:
+                    onPressed: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=> HomePage()));},
+                     child:
                      Text("Sign In",style:TextStyle(fontWeight: FontWeight.bold),)),
                 ),
               ),
