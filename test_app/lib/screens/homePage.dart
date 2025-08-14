@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_app/Theme/buttonsOben.dart';
+import 'package:test_app/Theme/subCard.dart';
+import 'package:test_app/screens/tripPage.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -30,9 +32,38 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),),
-        ],
-
+            Positioned(top: 150,right: 16,left: 16,
+              child: Row( 
+                children: [
+                  Expanded(
+                    child: TextField( 
+                      decoration: InputDecoration(filled: true,fillColor: Colors.white,
+                      prefixIcon: Icon(Icons.search,),
+                      hintText: "search places"),
+                    ),
+                  ),
+                  SizedBox(width: 8,),
+                  IconButton( onPressed:(){},
+                     icon: Icon(Icons.tune)),
+                ],
+              )),
+          Positioned( top: 250,
+            child: GestureDetector( onTap: (){showModalBottomSheet(context: context,isScrollControlled:true,backgroundColor: Colors.transparent,
+             builder: (context)=> TripPage(),
+             );},
+              child: subCard(
+                image: "images/paris.jpg",
+                title: "Paris",
+                price: "Ab 1900E",
+                likes: "1.2 K",
+              
               ),
-              );
+            ),
+          ),
+        ],
+      ),
+     );
   }
+  
+  tripPage() {}
 }
