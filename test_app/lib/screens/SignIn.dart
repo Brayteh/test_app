@@ -13,9 +13,11 @@ class _SignInPageState extends State<SignInPage> {
 // te3rif user wel pass la nst3milon b3dn bel button 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 // user w pass lsa7i7 
   final String _correctUsername = "jakop@gmail.com";
-  final String _correctPassword = "Password123";
+  final String _correctPassword = "12345";
 
     @override
   void dispose() {
@@ -33,7 +35,7 @@ class _SignInPageState extends State<SignInPage> {
     print("the inputet password: $password");
 // shart ldu5ul lal saf7a, MaterialPageRoute saret hon w t7t mnstad3ia
     if (email == _correctUsername && password == _correctPassword){
-      Navigator.of(context).push(
+      Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context)=> HomePage(),)
       ); 
@@ -58,11 +60,14 @@ class _SignInPageState extends State<SignInPage> {
     return  Scaffold(
       body: Stack(
         children: [
-         Container(
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              image: DecorationImage(image: AssetImage("images/signIn.png"),fit: BoxFit.cover),),
-          ),
+         Form(
+          key: _formKey,
+           child: Container(
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                image: DecorationImage(image: AssetImage("images/signIn.png"),fit: BoxFit.cover),),
+            ),
+         ),
       
           Positioned( top: 70,left: 8,
             child: Text("Welcome to your Travel App",style: Theme.of(context).textTheme.headlineLarge),
@@ -71,7 +76,7 @@ class _SignInPageState extends State<SignInPage> {
               child: Text("Sign In",style:Theme.of(context).textTheme.headlineLarge),
             ),
             Positioned(top: 320,left: 16,right: 16,
-              child: TextField(
+              child: TextFormField(
                 keyboardType: TextInputType.emailAddress,
                 controller: _emailController,
                 decoration: InputDecoration(
@@ -79,7 +84,7 @@ class _SignInPageState extends State<SignInPage> {
                 hintText: "Email"),),
               ),
               Positioned(top: 380,left: 16,right: 16,
-                child: TextField(
+                child: TextFormField(
                   keyboardType: TextInputType.visiblePassword,
                   controller: _passwordController,
                    obscureText: true,

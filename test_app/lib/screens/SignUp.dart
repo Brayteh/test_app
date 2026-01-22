@@ -10,16 +10,42 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   bool term = false;
+  final _formKey = GlobalKey<FormState>();
+  final _passCtrl = TextEditingController();
+  final _confPassCtrl = TextEditingController();
+
+    @override
+  void dispose() {
+    _passCtrl.dispose();
+    _confPassCtrl.dispose();
+    super.dispose();
+  }
+
+    void _submit() {
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "Done!",
+          ),
+        ),
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       body: Stack(
         children: [
-          Container(alignment: Alignment.center,
+          Container(
+            alignment: Alignment.center,
             decoration:BoxDecoration(
-              image: DecorationImage(image: AssetImage("images/signUp.png"),fit: BoxFit.cover),
+            image: DecorationImage(image: AssetImage("images/signUp.png"),fit: BoxFit.cover),
             ) ,
           ),
+          
           Positioned(top: 80,left: 20,
             child: Text("Sign Up",style: Theme.of(context).textTheme.headlineLarge,)
             ),
@@ -51,15 +77,43 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: TextField( keyboardType: TextInputType.datetime,
                   decoration: InputDecoration(filled: true,fillColor: Colors.white,hintText: "Your date of birth"), ),
                   ),
-              Positioned(top: 600,right: 90,left: 90,
-                    child: ElevatedButton(onPressed: (){},
+              Positioned(top: 560, left: 20,
+              child: Text("Password",style: Theme.of(context).textTheme.bodyMedium ,)
+              ),
+              Positioned(top: 600,right: 16,left: 16,
+                child: TextFormField( 
+                  controller: _passCtrl,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    filled: true,fillColor: Colors.white,
+                    hintText: "password"),
+                    validator:(value){
+                      final v = value?.trim() ?? "";
+                      if (v.isEmpty) return "please write a password";
+                      if (v.length > 5) return "Please use at least 5 characters";
+                      return null;
+                    }
+                     ),
+                  ),
+              Positioned(top: 660, left: 20,
+              child: Text("Confirm password",style: Theme.of(context).textTheme.bodyMedium ,)
+              ),
+              Positioned(top: 700,right: 16,left: 16,
+                child: TextField( 
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    filled: true,fillColor: Colors.white,
+                    hintText: "confirm password"), ),
+                  ),    
+              Positioned(top: 760,right: 90,left: 90,
+                    child: ElevatedButton(onPressed: _submit,
                      child: Text("Sign up"))
                      ),
-              Positioned( top: 650,
+              Positioned( top: 800,
                 child: Row( 
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Text("I have read the terms and conditions",style: Theme.of(context).textTheme.labelLarge,),
                     ),
                     Padding(

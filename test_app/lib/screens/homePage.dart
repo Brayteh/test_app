@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
               child: subCard(
                 image: "images/paris.jpg",
                 title: "Paris",
-                price: "Ab 1900E",
+                price: "Ab 1900",
                 likes: "1.2 K",
               
               ),
