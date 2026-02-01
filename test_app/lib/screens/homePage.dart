@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:test_app/screens/buttonsOben.dart';
 import 'package:test_app/screens/subCard.dart';
 import 'package:test_app/screens/tripPage.dart';
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +25,48 @@ class HomePage extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(image: AssetImage("images/homePage.png"),fit: BoxFit.cover),),
           ),
+          _buildBody(),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  color: Colors.white.withOpacity(0.2),
+                  child: BottomNavigationBar(
+                    backgroundColor: Colors.transparent,
+                    elevation: 0,
+                    type: BottomNavigationBarType.fixed,
+                    selectedItemColor: Colors.blue,
+                    unselectedItemColor: Colors.white,
+                    currentIndex: _selectedIndex,
+                    onTap: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
+                    items: const [
+                      BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+                      BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+                      BottomNavigationBarItem(icon: Icon(Icons.notifications), label: "Notifications"),
+                      BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+     );
+  }
+
+  Widget _buildBody() {
+    if (_selectedIndex == 0) {
+      return Stack(
+        children: [
           Positioned(top: 80,left: 0,right: 0,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal, padding: EdgeInsets.symmetric(horizontal: 16),
@@ -105,9 +155,14 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ],
-      ),
-     );
+      );
+    } else {
+      return Center(
+        child: Text(
+          _selectedIndex == 1 ? "Profile" : _selectedIndex == 2 ? "Notifications" : "Settings",
+          style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+      );
+    }
   }
-  
-  tripPage() {}
 }
