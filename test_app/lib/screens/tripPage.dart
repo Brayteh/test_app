@@ -3,7 +3,18 @@ import 'package:flutter/material.dart';
 import 'dart:ui';
 
 class TripPage extends StatelessWidget {
-  const TripPage({super.key});
+  final String image;
+  final String title;
+  final String price;
+  final String likes;
+
+  const TripPage({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.price,
+    required this.likes,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,31 +33,31 @@ class TripPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(child: Image.asset("images/paris.jpg", height: 250)),
+              Center(child: Image.asset(image, height: 250)),
               const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    "Paris",
-                    style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold,),
+                  Text(
+                    title,
+                    style: const TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold,),
                   ),
                   Row(
-                    children: const [
-                      Icon(Icons.favorite_border, color: Colors.white),
-                      SizedBox(width: 4),
-                      Text("1,2 K", style: TextStyle(color: Colors.white)),
+                    children: [
+                      const Icon(Icons.favorite_border, color: Colors.white),
+                      const SizedBox(width: 4),
+                      Text(likes, style: const TextStyle(color: Colors.white)),
                     ],
                   )
                 ],
               ),
               const SizedBox(height: 8),
               Text(
-                "Book now for a special trip in Paris, Enjoy!",
+                "Book now for a special trip in $title, Enjoy!",
                 style: TextStyle(color: Colors.grey[300]),
               ),
               const SizedBox(height: 16),
-              const Text("Ab 1,600 €", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+              Text(price, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
               const Divider(color: Colors.grey),
 
               Column(crossAxisAlignment: CrossAxisAlignment.start,

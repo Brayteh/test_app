@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/Theme/buttonsOben.dart';
-import 'package:test_app/Theme/subCard.dart';
+import 'package:test_app/screens/buttonsOben.dart';
+import 'package:test_app/screens/subCard.dart';
 import 'package:test_app/screens/tripPage.dart';
 
 
@@ -54,7 +54,12 @@ class HomePage extends StatelessWidget {
               child: Row(
                 children: [
                   GestureDetector( onTap: (){showModalBottomSheet(context: context,isScrollControlled:true,backgroundColor: Colors.transparent,
-                   builder: (context)=> TripPage(),
+                   builder: (context)=> TripPage(
+                     image: "images/paris.jpg",
+                     title: "Paris",
+                     price: "Ab 1900",
+                     likes: "1.2 K",
+                   ),
                    );},
                     child: subCard(
                       image: "images/paris.jpg",
@@ -65,7 +70,12 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(width: 3),
                   GestureDetector( onTap: (){showModalBottomSheet(context: context,isScrollControlled:true,backgroundColor: Colors.transparent,
-                   builder: (context)=> TripPage(),
+                   builder: (context)=> TripPage(
+                     image: "images/baalbek.jpg",
+                     title: "Baalbek",
+                     price: "Ab 2200",
+                     likes: "1.7 K",
+                   ),
                    );},
                     child: subCard(
                       image: "images/baalbek.jpg",
@@ -76,7 +86,12 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(width: 3),
                   GestureDetector( onTap: (){showModalBottomSheet(context: context,isScrollControlled:true,backgroundColor: Colors.transparent,
-                   builder: (context)=> TripPage(),
+                   builder: (context)=> TripPage(
+                     image: "images/vienice.jpg",
+                     title: "Vienice",
+                     price: "Ab 2500",
+                     likes: "1.9 K",
+                   ),
                    );},
                     child: subCard(
                       image: "images/vienice.jpg",
